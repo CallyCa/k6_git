@@ -43,5 +43,5 @@ jobs:
       # shell: bash
       # Run k6 tests
       - name: Run k6 tests
-        run: npm FullFlowLoadTest
+        run: npm run FullFlowLoadTest
         # shell: bash
