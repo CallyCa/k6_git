@@ -29,33 +29,41 @@ on:
   #   # * is a special character in YAML so you have to quote this string
   #   - cron: '0 9 * * *'
 
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  K6_Testing:
-    name: k6 docker test run on Ubuntu
+  # This workflow contains a single job called "build"
+  k6_local_test:
+    name: k6 test run on Ubuntu
     runs-on: ubuntu-latest
-    container:
-      image: docker://loadimpact/k6:latest
-      options: --user 1001
 
+    # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - name: Checkout
         uses: actions/checkout@v3
 
+      # Download and install k6 (Ubuntu)
+      - name: Download and install deb packages
+        run: |
+          sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys C5AD17C747E3415A3642D57D77C6C491D6AC1D69
+          echo "deb https://dl.k6.io/deb stable main" | sudo tee /etc/apt/sources.list.d/k6.list
+          sudo apt-get update
+          sudo apt-get install k6
+
       # Setup nodejs
-      - name: cache node modules
-        uses: actions/cache@v3
+      - name: Use Node.js
+        uses: actions/setup-node@v3
         with:
-          path: ~/.npm
-          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-build-${{ env.cache-name }}-
-            ${{ runner.os }}-build-
-            ${{ runner.os }}-
+          node-version: '16'
+
+      # Install npm packages
+      - name: Install npm packages
+        run: npm install
 
       # Run k6 tests
-      - run: |
-          echo "Executando teste - 8000vu"
+      - name: Run k6 tests
+        run: |
+          echo "Executando teste - 10vu"
           echo "Log level: $LEVEL"
           echo "Tags: $TAGS"
           echo "Environment: $ENVIRONMENT"
