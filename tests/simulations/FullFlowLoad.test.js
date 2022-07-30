@@ -15,7 +15,7 @@ export let options = {
 
 		// Permanecer em 100 usuários por 10 minutos
 
-		{ duration: '1m', target: 5 },
+		{ duration: '30s', target: 5 },
 
 		// Redução para 0 usuários
 
