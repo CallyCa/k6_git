@@ -1,0 +1,40 @@
+{
+  "name": "k6",
+  "version": "0.0.3",
+  "description": "k6",
+  "main": "index.js",
+  "scripts": {
+    "FullFlowLoadTest": "webpack && k6 run dist/FullFlowLoad.test.js",
+    "FullFlowStressTest": "webpack && k6 run  dist/FullFlowStress.test.js",
+    "lint:js": "eslint --ext \".js\" --ignore-path .gitignore . --fix",
+    "lint": "yarn lint:js"
+  },
+  "devDependencies": {
+    "@babel/eslint-parser": "^7.18.9",
+    "@faker-js/faker": "7.3.0",
+    "eslint": "^8.20.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-import": "^2.25.4",
+    "eslint-plugin-prettier": "^4.0.0",
+    "path-browserify": "^1.0.1",
+    "prettier": "^2.5.1",
+    "webpack-cli": "^4.8.0"
+  },
+  "dependencies": {
+    "@babel/core": "^7.15.0",
+    "@babel/preset-env": "^7.15.0",
+    "axios": "^0.27.2",
+    "babel-loader": "^8.2.2",
+    "bcrypt": "^5.0.1",
+    "casual": "^1.6.2",
+    "console-browserify": "^1.2.0",
+    "core-js": "^3.16.3",
+    "cross-env": "^7.0.3",
+    "dotenv": "^16.0.1",
+    "express": "^4.17.2",
+    "faker": "^5.5.3",
+    "fs": "^0.0.1-security",
+    "os-browserify": "^0.3.0",
+    "webpack": "^5.65.0"
+  }
+}
