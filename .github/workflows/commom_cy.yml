@@ -1,18 +1,14 @@
 name: Common CI - Reusable Workflow
 
 on:
-  workflow_call:
-    inputs:
-      type_pipeline:
-        description: 'What pipeline is triggering the common_ci.yml'
-        required: false
-        type: string
+  push:
+    branches:
+      - main
+
 
 jobs:
   lint:
-
     runs-on: ubuntu-18.04
-
     steps:
     - name: Project checkout
       uses: actions/checkout@v2
