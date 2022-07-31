@@ -1,0 +1,35 @@
+name: Common CI - Reusable Workflow
+
+on:
+  workflow_call:
+    inputs:
+      type_pipeline:
+        description: 'What pipeline is triggering the common_ci.yml'
+        required: false
+        type: string
+
+jobs:
+  lint:
+
+    runs-on: ubuntu-18.04
+
+    steps:
+    - name: Project checkout
+      uses: actions/checkout@v2
+    - name: Node.js Setup
+      uses: actions/setup-node@v2
+    - name: Installation of Node.js dependencies
+      run: npm ci
+    - name: Lint
+      run: npm run lint
+
+  commit-lint:
+
+    runs-on: ubuntu-18.04
+
+    steps:
+    - name: Project checkout
+      uses: actions/checkout@v2
+      with:
+        fetch-depth: 0
+    - uses: wagoid/commitlint-github-action@v2

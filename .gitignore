@@ -68,3 +68,5 @@ test-report/
 # dist
 
 dist/
+tests/reports/
+
