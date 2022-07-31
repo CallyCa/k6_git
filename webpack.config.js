@@ -29,7 +29,7 @@ module.exports = {
 	devtool: 'source-map',
 	stats: {
 		colors: true,
-        // warnings: false,
+		// warnings: false,
 	},
 	plugins: [
 		new CleanWebpackPlugin(),
