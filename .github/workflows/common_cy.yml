@@ -5,10 +5,10 @@ on:
     branches:
       - main
 
-
 jobs:
   lint:
     runs-on: ubuntu-18.04
+
     steps:
     - name: Project checkout
       uses: actions/checkout@v2
@@ -20,7 +20,6 @@ jobs:
       run: npm run lint
 
   commit-lint:
-
     runs-on: ubuntu-18.04
 
     steps:

@@ -10,12 +10,12 @@ import { group } from 'k6'
 
 export let options = {
 	stages: [
-		// Simula o aumento do tráfego de 1 para 20 usuários em 10 segundos.
-		{ duration: '30s', target: 10 },
-
-		// Permanecer em 100 usuários por 10 minutos
-
+		// Simula o aumento do tráfego de 1 para 5 usuários em 30 segundos.
 		{ duration: '30s', target: 5 },
+
+		// Permanecer em 10 usuários por 1 minuto
+
+		{ duration: '1m', target: 10 },
 
 		// Redução para 0 usuários
 

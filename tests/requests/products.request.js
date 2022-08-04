@@ -1,7 +1,6 @@
 import { check } from 'k6'
 import http from 'k6/http'
 import Router from '../services/index.js'
-// import { faker } from '@faker-js/faker'
 import * as faker from 'faker/locale/pt_BR'
 
 export default class Products {
