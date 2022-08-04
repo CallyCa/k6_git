@@ -1,10 +1,7 @@
 import Users from '../requests/users.request.js'
 import Login from '../requests/login.request.js'
 import Products from '../requests/products.request.js'
-import {
-	jUnit,
-	textSummary,
-} from 'https://jslib.k6.io/k6-summary/0.0.1/index.js'
+import { textSummary } from 'https://jslib.k6.io/k6-summary/0.0.1/index.js'
 import { htmlReport } from 'https://raw.githubusercontent.com/benc-uk/k6-reporter/main/dist/bundle.js'
 import { group } from 'k6'
 
@@ -24,7 +21,8 @@ export let options = {
 	thresholds: {
 		// 99% das solicitações devem ser concluídas abaixo de 1,5 s
 
-		http_req_duration: ['p(99)<1500'],
+		http_req_duration: ['p(99)<1400', 'p(50)<2300'],
+		http_req_waiting: ['avg<3000'],
 	},
 }
 
@@ -57,8 +55,7 @@ export default function () {
 export function handleSummary(data) {
 	return {
 		stdout: textSummary(data, { indent: ' ', enableColors: true }),
-		//'src/junit.xml': jUnit(data),
 		'tests/reports/summary.json': JSON.stringify(data),
-		'tests/reports/fullFlowLoad.html': htmlReport(data),
+		'tests/reports/loadTesting.html': htmlReport(data),
 	}
 }

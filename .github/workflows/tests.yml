@@ -67,7 +67,7 @@ jobs:
           echo "Log level: $LEVEL"
           echo "Tags: $TAGS"
           echo "Environment: $ENVIRONMENT"
-          npm run FullFlowLoadTest
+          npm run loadTest
 
         env:
           LEVEL: ${{ inputs.logLevel }}

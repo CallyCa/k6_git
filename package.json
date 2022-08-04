@@ -6,8 +6,8 @@
   "scripts": {
     "commit": "cz",
     "cleanup": "rm -rf tests/reports/",
-    "FullFlowLoadTest": "webpack && npm run cleanup && mkdir tests/reports && k6 run dist/FullFlowLoad.test.js",
-    "FullFlowStressTest": "webpack && npm run cleanup && mkdir tests/reports && k6 run dist/FullFlowStress.test.js",
+    "loadTest": "webpack && npm run cleanup && mkdir tests/reports && k6 run dist/load.test.js",
+    "stressTest": "webpack && npm run cleanup && mkdir tests/reports && k6 run dist/stress.test.js",
     "lint:js": "eslint --ext \".js\" --ignore-path .gitignore . --fix",
     "lint": "yarn lint:js",
     "precommit": "lint-staged"
