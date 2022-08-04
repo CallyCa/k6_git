@@ -25,9 +25,9 @@ $ yarn install
 Executar Testes:
 
 ```bash
-$ yarn FullFlowLoadTest
+$ yarn loadTest
 ou
-$ yarn FullFlowStressTest
+$ yarn stressTest
 ```
 
 Executar lint para correção de erros no código:
